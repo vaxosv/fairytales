@@ -28,7 +28,9 @@
                         <div class="form-group">
                             <label>Categorie:</label>
                             <select id="categories" name="categories" class="form-control" multiple>
-
+                                <% for(var i = 0; i < categories.length; i++) { %>
+                                <option value="<%= categories[i]._id %>"><%= categories[i].title %></option>
+                                <% } %>
                             </select>
                         </div>
                     </div>
