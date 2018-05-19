@@ -1,8 +1,78 @@
 <%- include('./header') %>
 
-    <div class="container-fluid">
-        <h4>ADD TALE</h4>
+<div class="container-fluid">
+    <h4>ADD TALE</h4>
+    <div class="card card-accent-blue">
+        <form action="/admin/addtale" method="post" id="taleForm">
+            <div class="card-header">
+                Add Tale Form
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label>Title</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Tale:</label>
+                            <div id="tale"></div>
+                            <textarea id="taleInput" name="tale" style="display:none;"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Categorie:</label>
+                            <select id="categories" name="categories" class="form-control" multiple>
 
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-outline-blue">ADD TALE</button>
+            </div>
+        </form>
     </div>
+</div>
+
+<script>
+    window.onload = function () {
+        var toolbarOptions = [
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            ['blockquote', 'code-block'],
+            [{'header': 1}, {'header': 2}],               // custom button values
+            [{'list': 'ordered'}, {'list': 'bullet'}],
+            [{'script': 'sub'}, {'script': 'super'}],      // superscript/subscript
+            [{'indent': '-1'}, {'indent': '+1'}],          // outdent/indent
+            [{'direction': 'rtl'}],                         // text direction
+            [{'size': ['small', false, 'large', 'huge']}],  // custom dropdown
+            [{'header': [1, 2, 3, 4, 5, 6, false]}],
+            [{'color': []}, {'background': []}],          // dropdown with defaults from theme
+            [{'font': []}],
+            [{'align': []}],
+            ['clean']                                         // remove formatting button
+        ];
+        var quill = new Quill('#tale', {
+            modules: {
+                toolbar: toolbarOptions
+            },
+            theme: 'snow'
+        });
+        $('#taleForm').submit(function () {
+            $("#taleInput").val($(".ql-editor").html());
+        });
+        $("#categories").select2({
+            theme: "bootstrap",
+            placeholder: "--Select Categorie--",
+            allowClear: true
+        });
+    }
+</script>
 
 <%- include('./footer') %>
