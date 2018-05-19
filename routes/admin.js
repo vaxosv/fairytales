@@ -41,7 +41,14 @@ router.get('/addtale', User.checkAuth, (req, res) => {
         page: 'addtale',
         user: req.user
     };
-    res.render('admin/addtale', opt);
+    Categorie.getCategories((err, data) => {
+        if (err) {
+            console.log(err);
+        } else {
+            opt.categories = data;
+            res.render('admin/addtale', opt);
+        }
+    });
 });
 
 router.get('/tales', User.checkAuth, (req, res) => {
