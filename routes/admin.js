@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Categorie = require('../controllers/categorieController');
+const Tale = require('../controllers/taleController');
 const User = require('../controllers/usersController');
 
 
@@ -88,6 +89,7 @@ router.get('/editcategory/:id', User.checkAuth, (req, res) => {
 // post requests
 router.post('/login', User.adminLogin);
 router.post('/addcategorie', User.checkAuth, Categorie.addCategorie);
+router.post('/addtale',User.checkAuth, Tale.allNew);
 
 router.post('/editcategorie', User.checkAuth, (req, res) => {
     Categorie.editCategorie(req, res);

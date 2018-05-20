@@ -13,9 +13,13 @@ module.exports.addNew = function (data, cb) {
     let Tale = this;
     let newTale = new Tale();
 
+    let categorieIds = [];
+
+    categorieIds = categorieIds.concat(data.categories);
+
     newTale.title = data.title;
     newTale.content = data.content;
-    newTale.categorieIds = data.categorieIds;
+    newTale.categorieIds = categorieIds;
 
     newTale.save(cb);
 };
