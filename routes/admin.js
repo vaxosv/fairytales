@@ -57,7 +57,14 @@ router.get('/tales', User.checkAuth, (req, res) => {
         page: 'tales',
         user: req.user
     };
-    res.render('admin/tales', opt);
+    Tale.getAll((err, data)=>{
+        if(err){
+            console.log(err);
+        } else {
+            opt.data = data;
+            res.render('admin/tales', opt);
+        }
+    });
 });
 
 

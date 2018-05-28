@@ -2,7 +2,20 @@
 
 <div class="container-fluid">
     <h4>All TALE</h4>
-
+    <table class="table table-striped">
+    	<tr>
+    		<th>Title:</th>
+    		<th>Small Desc:</th>
+    		<th>Action:</th>
+    	</tr>
+    	<% data.forEach(function(tale){ %>
+    		<tr>
+    			<td><%= tale.title %></td>
+    			<td><%- tale.content.substring(0,200) %></td>
+    			<td><a href="" target="_blank">Edit</a> <button type="button" class="btn btn-sm btn-danger">Delete</button></td>
+    		</tr>
+    	<% }); %>
+    </table>
 </div>
 
 <%- include('./footer') %>

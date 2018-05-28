@@ -1,8 +1,8 @@
 const Tale = require('../models/tale');
 
 class TaleController {
-    getAll(){
-
+    getAll(cb){
+        Tale.getAll(cb);
     }
 
     allNew(req,res){

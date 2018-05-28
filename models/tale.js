@@ -18,7 +18,7 @@ module.exports.addNew = function (data, cb) {
     categorieIds = categorieIds.concat(data.categories);
 
     newTale.title = data.title;
-    newTale.content = data.content;
+    newTale.content = data.tale;
     newTale.categorieIds = categorieIds;
 
     newTale.save(cb);
