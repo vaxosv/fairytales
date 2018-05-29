@@ -23,6 +23,12 @@ class TaleController {
         });
     }
 
+    removeTale(id,cb){
+        if(id){
+            Tale.remove(id,cb);
+        }
+    }
+
     getById(){
 
     }

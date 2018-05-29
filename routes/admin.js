@@ -109,5 +109,14 @@ router.delete('/removecategory', User.checkAuth, (req, res) => {
     Categorie.removeCategory(req, res);
 });
 
+router.delete('/removetale',User.checkAuth,(req, res)=>{
+    Tale.removeTale(req.body.id,(err,data)=>{
+        if(err){
+            console.log(err);
+        } else {
+            res.json({success: true});
+        }
+    });
+})
 
 module.exports = router;
