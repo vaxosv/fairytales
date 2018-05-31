@@ -1,8 +1,9 @@
 <%- include('./header') %>
 
 <div class="container-fluid">
-    <h4>ADD TALE</h4>
+    <h4><% if(page == 'addtale') { %> ADD TALE <% } else if(page == 'edittale') { %> EDIT TALE <% } %></h4>
     <div class="card card-accent-blue">
+        <% if(page == 'addtale') { %>
         <form action="/admin/addtale" method="post" id="taleForm">
             <div class="card-header">
                 Add Tale Form
@@ -40,6 +41,51 @@
                 <button type="submit" class="btn btn-outline-blue">ADD TALE</button>
             </div>
         </form>
+        <% } else if(page == 'edittale') { %>
+            <form action="/admin/addtale" method="post" id="taleForm">
+            <div class="card-header">
+                Edit Tale Form
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label>Title</label>
+                        <input type="text" name="title" value="<%= tale.title %>" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Tale:</label>
+                            <div id="tale"><%- tale.content %></div>
+                            <textarea id="taleInput" name="tale" style="display:none;"><%= tale.content %></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>Categorie:</label>
+                            <select id="categories" name="categories" class="form-control" multiple>
+                                <% for(var i = 0; i < categories.length; i++) { %>
+                                <option value="<%= categories[i]._id %>"
+                                    <% for(var j=0; j<tale.categorieIds.length; j++) { %>
+                                        <% if(categories[i]._id == `${tale.categorieIds[j]}`){ %>
+                                            selected
+                                        <% } %>
+                                    <% } %>
+                                    ><%= categories[i].title %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-outline-blue">ADD TALE</button>
+            </div>
+        </form>
+        <% } %>
     </div>
 </div>
 

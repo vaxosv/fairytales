@@ -29,8 +29,10 @@ class TaleController {
         }
     }
 
-    getById(){
-
+    getById(id, cb){
+        if(id){
+            Tale.getById(id,cb);
+        }
     }
 }
 

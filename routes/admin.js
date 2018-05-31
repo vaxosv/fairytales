@@ -52,6 +52,29 @@ router.get('/addtale', User.checkAuth, (req, res) => {
     });
 });
 
+router.get('/edittale/:id',User.checkAuth, (req,res)=>{
+    let opt = {
+        page: 'edittale',
+        user: req.user
+    };
+    let id = req.params.id ? req.params.id : null;
+    Categorie.getCategories((err, data) => {
+        if (err) {
+            console.log(err);
+        } else {
+            opt.categories = data;
+            Tale.getById(id,(err,tale)=>{
+                if(err){
+                    console.log(err);
+                } else {
+                    opt.tale = tale;
+                    res.render('admin/addtale', opt);
+                }
+            });
+        }
+    });
+});
+
 router.get('/tales', User.checkAuth, (req, res) => {
     let opt = {
         page: 'tales',

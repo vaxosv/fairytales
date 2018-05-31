@@ -12,7 +12,7 @@
     		<tr>
     			<td><%= tale.title %></td>
     			<td><%- tale.content.substring(0,200) %></td>
-    			<td><a href="" target="_blank">Edit</a> <button type="button" class="btn btn-sm btn-danger" onclick="deleteTale('<%= tale._id %>')">Delete</button></td>
+    			<td><a href="/admin/edittale/<%= tale._id %>">Edit</a> <button type="button" class="btn btn-sm btn-danger" onclick="deleteTale('<%= tale._id %>')">Delete</button></td>
     		</tr>
     	<% }); %>
     </table>
