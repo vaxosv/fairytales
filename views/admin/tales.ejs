@@ -11,7 +11,7 @@
     	<% data.forEach(function(tale){ %>
     		<tr>
     			<td><%= tale.title %></td>
-    			<td><%- tale.content.substring(0,200) %></td>
+    			<td><%- tale.content.substring(0,80) %></td>
     			<td><a href="/admin/edittale/<%= tale._id %>">Edit</a> <button type="button" class="btn btn-sm btn-danger" onclick="deleteTale('<%= tale._id %>')">Delete</button></td>
     		</tr>
     	<% }); %>

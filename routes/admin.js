@@ -125,6 +125,8 @@ router.post('/editcategorie', User.checkAuth, (req, res) => {
     Categorie.editCategorie(req, res);
 });
 
+router.post('/updatetale', User.checkAuth, Tale.updateTale);
+
 
 //delete requests
 

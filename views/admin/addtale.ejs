@@ -42,7 +42,8 @@
             </div>
         </form>
         <% } else if(page == 'edittale') { %>
-            <form action="/admin/addtale" method="post" id="taleForm">
+            <form action="/admin/updatetale" method="post" id="taleForm">
+            <input type="hidden" name="id" value="<%= tale._id %>">
             <div class="card-header">
                 Edit Tale Form
             </div>
@@ -82,7 +83,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-outline-blue">ADD TALE</button>
+                <button type="submit" class="btn btn-outline-blue">UPDATE TALE</button>
             </div>
         </form>
         <% } %>

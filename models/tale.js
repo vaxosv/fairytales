@@ -24,6 +24,20 @@ module.exports.addNew = function (data, cb) {
     newTale.save(cb);
 };
 
+module.exports.updateTale = function(data, cb){
+    let Tale = this;
+
+    let categorieIds = [];
+
+    categorieIds = categorieIds.concat(data.categories);
+
+    Tale.findByIdAndUpdate(data.id,{
+        title: data.title,
+        content: data.tale,
+        categorieIds: categorieIds
+    },cb);
+};
+
 module.exports.getAll = function (cb) {
     let Tale = this;
     Tale.find(cb);
