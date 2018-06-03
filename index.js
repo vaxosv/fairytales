@@ -16,7 +16,11 @@ mongoose.connect(config.mongo);
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({
+    extended: false,
+    parameterLimit: 100000,
+    limit: '50mb'
+}));
 app.use(cookieParser());
 app.use(session({ secret: 'keyboard cat' }));
 app.use(passport.initialize());
